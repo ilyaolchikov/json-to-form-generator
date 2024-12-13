@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-to-Form Generator Example</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional CSS for styling -->
+</head>
+<body>
+<h1>JSON-to-Form Generator Example</h1>
+<div id="form-container"></div>
+
+<!-- Set the correct path for your project -->
+<script src="./json-to-form-generator.min.js"></script>
+<script>
+  window.onload = function() {
+    const schema = {
+      fields: [
+        { name: "email", type: "email", required: true, placeholder: "Enter email", label: "Email", cssClasses: "input-email", id: "email-id" },
+        { name: "password", type: "password", required: true, placeholder: "Enter password", label: "Password", cssClasses: "input-password", id: "password-id" },
+        { name: "age", type: "number", placeholder: "Enter age", label: "Age", cssClasses: "input-age", id: "age-id" },
+        { name: "country", type: "select", label: "Contry", options: [{ value: "usa", label: "USA" }, { value: "canada", label: "Canada" }], cssClasses: "input-gender", id: "gender-id" },
+        { name: "subscribe", type: "checkbox", label: "Subscribe", cssClasses: "input-checkbox", id: "subscribe" },
+        { name: "subscribe", type: "checkbox", label: "Subscribe", cssClasses: "input-checkbox", id: "subscribe2" },
+        { name: "gender", type: "radio", label: "Male", cssClasses: "input-radio", id: "subscribe3" },
+        { name: "gender", type: "radio", label: "Female", cssClasses: "input-radio", id: "subscribe4" }
+      ],
+      submitText: "Register"
+    };
+
+    const formGenerator = new JsonToFormGenerator(schema);
+    const form = formGenerator.generateForm();
+
+    document.getElementById('form-container').appendChild(form);
+  };
+</script>
+</body>
+</html>
